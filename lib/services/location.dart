@@ -18,10 +18,5 @@ class Location {
     }
   }
 
-  void printLocation() async {
-    List<Placemark> placemarks =
-        await placemarkFromCoordinates(52.2165157, 6.9437819);
 
-    print(placemarks);
-  }
 }

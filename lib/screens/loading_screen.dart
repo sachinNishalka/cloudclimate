@@ -18,7 +18,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     await objLocation.getLocation();
     print(objLocation.latitude);
     print(objLocation.logitute);
-    objLocation.printLocation();
+
   }
 
   // void getData() async {
