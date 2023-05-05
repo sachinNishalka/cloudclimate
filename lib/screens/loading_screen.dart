@@ -3,10 +3,10 @@ import 'package:geolocator/geolocator.dart';
 
 // location getting function
 void getLocation() async {
-  Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high);
   print(position);
 }
-
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -15,18 +15,11 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            //Get the current location
-        getLocation();
+  void initState() {
+    getLocation();
+  }
 
-          },
-          child: Text('Get Location'),
-        ),
-      ),
-    );
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }
