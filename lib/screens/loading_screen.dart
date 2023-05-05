@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloudclimate/services/location.dart';
-
-Location objLocation = Location();
+import 'package:http/http.dart' as http;
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -11,8 +10,20 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
-    objLocation.getLocation();
+    getLocation();
   }
+
+  void getLocation() async {
+    Location objLocation = Location();
+    await objLocation.getLocation();
+    print(objLocation.latitude);
+    print(objLocation.logitute);
+    objLocation.printLocation();
+  }
+
+  // void getData() async {
+  //   http.Response response = await http.get(url);
+  // }
 
   Widget build(BuildContext context) {
     return Scaffold();
