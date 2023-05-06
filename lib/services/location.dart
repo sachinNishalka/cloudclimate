@@ -1,5 +1,5 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
+
 
 class Location {
   late double latitude;
@@ -18,10 +18,5 @@ class Location {
     }
   }
 
-  void printLocation() async {
-    List<Placemark> placemarks =
-        await placemarkFromCoordinates(52.2165157, 6.9437819);
 
-    print(placemarks);
-  }
 }
