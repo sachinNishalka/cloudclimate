@@ -18,11 +18,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
     await objLocation.getLocation();
     print(objLocation.latitude);
     print(objLocation.logitute);
-
   }
 
   void getData() async {
-    http.Response response = await http.get(weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=37.4219983,-122.084&aggregateHours=24&unitGroup=us&shortColumnNames=false&contentType=json&key=GPUN44XMFT74EYL4DEZ3EZD4B);
+    http.Response response = await http.get(Uri.parse(
+        'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=37.4219983,-122.084&aggregateHours=24&unitGroup=us&shortColumnNames=false&contentType=json&key=GPUN44XMFT74EYL4DEZ3EZD4B'));
   }
 
   Widget build(BuildContext context) {
