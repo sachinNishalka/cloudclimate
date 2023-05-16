@@ -5,6 +5,9 @@ import 'package:cloudclimate/services/location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cloudclimate/services/networking.dart';
+import 'package:cloudclimate/screens/location_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 
 const String apiKey = 'c189a77a850558871c5449884b5d9684';
 
@@ -34,7 +37,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     NetworkHelper networkHelper = NetworkHelper('https://api.openweathermap.org/data/2.5/weather?lat=$latitute&lon=$longitute&appid=$apiKey');
 
     var whetherdata = await networkHelper.getData();
+    
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationScreen(),));
 
+    
 
   }
 
@@ -63,6 +69,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   Widget build(BuildContext context) {
     // getData();
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: SpinKitRotatingCircle(
+          color: Colors.white,
+          size: 50.0,
+        ),
+      ),
+    );
   }
 }
