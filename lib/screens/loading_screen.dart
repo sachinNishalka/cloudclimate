@@ -35,9 +35,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
           String data = response.body;
           // print(data);
 
-          String cityName = jsonDecode(data)['locations']['37.4219983,-122.084']['tz'];
-          double temparature = jsonDecode(data)['locations']['37.4219983,-122.084']['values'][1]['temp'];
-          String condition = jsonDecode(data)['locations']['37.4219983,-122.084']['values'][0]['conditions'];
+          var decodeData = jsonDecode(data);
+
+          String cityName = decodeData['locations']['37.4219983,-122.084']['tz'];
+          double temparature = decodeData['locations']['37.4219983,-122.084']['values'][1]['temp'];
+          String condition = decodeData['locations']['37.4219983,-122.084']['values'][0]['conditions'];
 
           print(cityName);
           print(temparature);
