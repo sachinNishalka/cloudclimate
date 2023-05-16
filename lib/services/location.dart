@@ -13,6 +13,7 @@ class Location {
 
       latitude = position.latitude;
       logitute = position.longitude;
+
     } catch (e) {
       print(e);
     }

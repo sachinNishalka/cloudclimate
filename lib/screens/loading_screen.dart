@@ -29,7 +29,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   void getData() async {
     http.Response response = await http.get(Uri.parse(
-        'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=37.4219983,-122.084&aggregateHours=24&unitGroup=us&shortColumnNames=false&contentType=json&key=GPUN44XMFT74EYL4DEZ3EZD4B'),);
+        'https://api.openweathermap.org/data/2.5/weather?lat=6.8216&lon=80.04753&appid=c189a77a850558871c5449884b5d9684'),);
 
         if(response.statusCode == 200){
           String data = response.body;
@@ -37,9 +37,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
           var decodeData = jsonDecode(data);
 
-          String cityName = decodeData['locations']['37.4219983,-122.084']['tz'];
-          double temparature = decodeData['locations']['37.4219983,-122.084']['values'][1]['temp'];
-          String condition = decodeData['locations']['37.4219983,-122.084']['values'][0]['conditions'];
+          String cityName = decodeData['name'];
+          double temparature = decodeData['main']['temp'];
+          String condition = decodeData['weather'][0]['description'];
 
           print(cityName);
           print(temparature);
