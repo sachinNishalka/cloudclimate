@@ -2,11 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:cloudclimate/utilities/constants.dart';
 
 class LocationScreen extends StatefulWidget {
+  LocationScreen({this.weatherData});
+
+  final weatherData;
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  late int temparature;
+  late String condition;
+  late String cityName;
+
+  @override
+  void initState() {
+    super.initState();
+    updateUI(widget.weatherData);
+  }
+
+  void updateUI(dynamic wheatherData) {
+    double temp = wheatherData['main']['temp'];
+    temparature = temp.toInt();
+    condition = wheatherData['weather'][0]['description'];
+    cityName = wheatherData['name'];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +70,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '32°',
+                      '$temparature°',
                       style: kTempTextStyle,
                     ),
                     Text(

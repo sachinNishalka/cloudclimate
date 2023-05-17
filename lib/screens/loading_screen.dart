@@ -34,11 +34,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     // print(objLocation.logitute);
 
-    NetworkHelper networkHelper = NetworkHelper('https://api.openweathermap.org/data/2.5/weather?lat=$latitute&lon=$longitute&appid=$apiKey');
+    NetworkHelper networkHelper = NetworkHelper('https://api.openweathermap.org/data/2.5/weather?lat=$latitute&lon=$longitute&appid=$apiKey&units=metric');
 
     var whetherdata = await networkHelper.getData();
     
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationScreen(),));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationScreen(weatherData: whetherdata),));
 
     
 
