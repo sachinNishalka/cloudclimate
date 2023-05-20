@@ -6,10 +6,21 @@ import 'package:cloudclimate/services/networking.dart';
 const String apiKey = 'c189a77a850558871c5449884b5d9684';
 const String openWeatherApi = 'https://api.openweathermap.org/data/2.5/weather';
 
+const String openCityWeatherApi = 'https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}';
+
+
 class WeatherModel {
 
   late double longitute;
   late double latitute;
+
+
+
+  Future<dynamic> getCityWeather(String cityName) async{
+    var url = '$openWeatherApi?q=$cityName&appid=$apiKey&units=metric';
+    var weatherData = await NetworkHelper(url).getData();
+    return weatherData;
+  }
 
 
   Future <dynamic> getLocationWeather() async{

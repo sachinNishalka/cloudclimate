@@ -3,6 +3,7 @@ import 'package:cloudclimate/utilities/constants.dart';
 import 'package:cloudclimate/services/weather.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:cloudclimate/screens/city_screen.dart';
+
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.weatherData});
 
@@ -37,9 +38,6 @@ class _LocationScreenState extends State<LocationScreen> {
             .show();
         return;
       }
-
-
-
 
       double temp = wheatherData['main']['temp'];
       temparature = temp.toInt();
@@ -82,8 +80,18 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CityScreen()));
+                    onPressed: () async {
+                      var typedName = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CityScreen(),
+                        ),
+                      );
+                      if(typedName != null){
+                        dynamic weatherData = await weatherModel.getCityWeather(typedName.toString());
+                        // print(typedName.toString());
+                        updateUI(weatherData);
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
