@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloudclimate/utilities/constants.dart';
 import 'package:cloudclimate/services/weather.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
+import 'package:cloudclimate/screens/city_screen.dart';
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.weatherData});
 
@@ -82,7 +82,9 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CityScreen()));
+                    },
                     child: Icon(
                       Icons.location_city,
                       size: 50.0,
