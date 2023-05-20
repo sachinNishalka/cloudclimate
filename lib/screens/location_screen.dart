@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloudclimate/utilities/constants.dart';
 import 'package:cloudclimate/services/weather.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.weatherData});
@@ -12,11 +13,7 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-
   WeatherModel weatherModel = WeatherModel();
-
-
-
 
   late int temparature;
   late String weatherIcon;
@@ -31,6 +28,19 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateUI(dynamic wheatherData) {
     setState(() {
+      if (wheatherData == null) {
+        // temparature = 0;
+        // weatherIcon = "Error";
+        // description = "Unable to get data";
+        // cityName='';
+        Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.")
+            .show();
+        return;
+      }
+
+
+
+
       double temp = wheatherData['main']['temp'];
       temparature = temp.toInt();
       int condition = wheatherData['weather'][0]['id'];
@@ -38,7 +48,6 @@ class _LocationScreenState extends State<LocationScreen> {
       description = weatherModel.getMessage(temparature);
       cityName = wheatherData['name'];
     });
-
   }
 
   @override
@@ -63,7 +72,10 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      var weatherData = await weatherModel.getLocationWeather();
+                      updateUI(weatherData);
+                    },
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,
