@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cloudclimate/services/networking.dart';
 
-const String apiKey = 'c189a77a850558871c5449884b5d9684';
+const String apiKey = 'your API Key Here';
 const String openWeatherApi = 'https://api.openweathermap.org/data/2.5/weather';
 
 const String openCityWeatherApi = 'https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}';
