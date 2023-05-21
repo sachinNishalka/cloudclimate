@@ -2,6 +2,8 @@
 
 CloudClimate is a Flutter-based mobile application that provides users with real-time weather information and forecasts. With a clean and intuitive user interface, the app allows users to quickly access weather data for their desired locations.
 
+![CloudClimate](https://github.com/sachinNishalka/cloudclimate/assets/72740598/19cd4f7d-7a54-495c-8aa9-7a945d1a33bb)
+
 ## Technologies and Programming Concepts Used
 
 - **Flutter:** The entire project is developed using Flutter, an open-source UI toolkit by Google. Flutter enables the creation of beautiful and high-performance applications for mobile, web, and desktop platforms using a single codebase.
